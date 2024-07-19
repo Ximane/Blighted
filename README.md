@@ -87,9 +87,105 @@ Things to work on (Semi-Ordered?)
                 High MS
                 Leaves Cream splat on death (1 Second) with 5% chance to spawn new critter from splat
 
+            Catalyst Crystal (Melee - Red)
+                Tower
+                Rare
+                High Health
+                25% Melee Damage Boost + 5% Heal pulse to mobs within 3 tiles
+                Slow pulse (2 Seconds On, 5 Seconds off)
+                Can be damaged by projectiles
+                High value drop
+                    Rare drop - Catalyst chunk (Increase Melee Damage, 10%)
+                Stationary
+
+            Catalyst Crystal (Ranged - Yellow)
+                Tower
+                Rare
+                High Health
+                10% Ranged Damage Boost + 5% Heal pulse to mobs within 3 tiles
+                Slow pulse (2 Seconds On, 5 Seconds off)
+                Can be damaged by melee
+                High value drop
+                    Rare drop - Catalyst chunk (Increase Ranged Damage, 5%)
+                Stationary
+
+            Catalyst Crystal (Melee Defense - Green)
+                Tower
+                Rare
+                High Health
+                10% Melee Damage Boost + 2% Heal pulse to mobs within 3 tiles
+                Slow pulse (2 Seconds On, 5 Seconds off)
+                Can be damaged by projectiles
+                High value drop
+                    Rare drop - Catalyst chunk (Increase Melee Resist, 4%)
+                Stationary
+
+            Catalyst Crystal (Ranged Defense - Purple)
+                Tower
+                Rare
+                High Health
+                20% Ranged Damage Resist + 2% Heal pulse to mobs within 3 tiles
+                Slow pulse (2 Seconds On, 5 Seconds off)
+                Can be damaged by melee
+                High value drop
+                    Rare drop - Catalyst chunk (Increase Ranged Resist, 8%)
+                Stationary
+
+            Catalyst Crystal (True Health - Pink)
+                Tower
+                Very Rare
+                High Health
+                10% Heal pulse to mobs within 3 tiles
+                Slow pulse (1 Second On, 8 Seconds off)
+                All damage
+                High value drop
+                    Rare drop - Catalyst chunk (10% Health boost - From base)
+                Stationary
+
+            Catalyst Crystal (Fused Damage - Orange)
+                Tower
+                Very Rare
+                High Health
+                30% Melee Damage Boost + 15% Ranged Damage Boost within 5 tiles
+                All damage
+                High value drop
+                    Rare drop - Catalyst chunk (Increase Damage, Melee 8%, Ranged 4%)
+                Stationary
+
+            Catalyst Crystal (Fused Resist - Blue)
+                Tower
+                Very Rare
+                High Health
+                15% Ranged Damage Resist + 10% Melee Damage Resist within 3 tiles
+                All damage
+                High value drop
+                    Rare drop - Catalyst chunk (Inrease Resist, 3% Melee, 6% Ranged)
+                Stationary
+
+            Catalyst Crystal (Infection - Black)
+                Tower
+                Ultra Rare
+                High Health
+                Gives DOT to Mob Attacks within 2 tiles (Small damage, 2 Second duration)
+                All damage
+                High value drop
+                    Rare drop - Catalyst chunk (% Chance to heal damage dealt; 5% Melee, 2% Ranged)
+                Stationary
+
+            Catalyst Crystal (Shield - White)
+                Tower
+                Ultra Rare
+                High Health
+                Gives shield to Mobs within 2 tiles (Reduce incoming damage by XX)
+                All damage
+                High value drop
+                    Rare drop - Catalyst chunk (3% to get Shield when killing mobs; Nullifies 1 instance of damage; Non-stacking)
+                Stationary
+
         Bosses
             Special Moves
             Gimmicks (?)
+            High value rewards (Currency + 1 Item/Modifier)
 
             Sulfa
                 Ranged
@@ -146,8 +242,44 @@ Things to work on (Semi-Ordered?)
                 Leave 2x2 DOT pool upon death - Location of troop = Lower Right Corner
 
             Penicilin
+                Ranged -> Melee
+                Boss
+                Medium Boss Health
+                High Boss Damage -> Medium Boss Damage
+                Slow Attack Speed -> Medium Attack Speed
+                0 to 6 tile dash between attacks -> Medium MS
+                Half Health : Goes from ranged to melee mode
+                    Ranged : Antibacterial shield - DOT in adjacent tiles
+                        Medium Speed Projectile - Infinite distance, obstacle collision
+                    Melee : Antibacterial Block - Takes reduced projectile damage (-70%)
+
+            Vancomycin
+                Summoner
                 BIG BOSS
-    
+                High Boss Health
+                Three-Stage:
+                    1 - Summon minions (10x, 2x)
+                            Chosen from Melee + Tower Mob pool
+                            Boss cannot be damaged
+                    2 - Summons minions (8x, 2x)
+                            Chosen from Ranged + Tower Mob pool
+                            Boss cannot be damaged
+                    3 - Combat Phase
+                            Mage
+                            Medium Boss Damage AOE
+                            Slow Attack Speed
+                            Reduced same type (Melee/Range) repeated damage (
+                                1-3 hit - 0%
+                                4-6 hit - 5%
+                                7-9 hit - 15%
+                                10-12 hit - 30%
+                                13-15 hit - 50%
+                                16-18 hit - 75%
+                                19-24 hit - 100%
+                                25+ hit - 100% + Heal 1% 
+                            )
+                            5 to 20 tile dash between attacks
+                            Projectile - Slow moving, 3x3 burst centered on target tile; Ignores small obstacles (Model - Red liquid ball)  
     Player 
         Sprite/Animations
         Actions
