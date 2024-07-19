@@ -77,9 +77,76 @@ Things to work on (Semi-Ordered?)
                     Small chance to drop consumable room defeat item (Puff blast; Doesn't work on bosses)
                 Stationary - 10 Sec CD Self-heal
 
+            Cream Critters
+                Melee
+                Common
+                Low Health
+                Low Damage
+                High Attack Speed
+                Sparse, common drops
+                High MS
+                Leaves Cream splat on death (1 Second) with 5% chance to spawn new critter from splat
+
         Bosses
             Special Moves
             Gimmicks (?)
+
+            Sulfa
+                Ranged
+                Boss
+                Medium Boss Health
+                High Boss Damage
+                Low Attack Speed
+                Dashes 0 to 10 tiles between attacks
+                    Projectile - High speed, infinite distance, obstacle collision; Each hit = 5% healing reduction, stacking to 50%
+
+            Minocycline
+                Melee
+                Boss
+                Medium Boss Health
+                Low Boss Damage
+                High Attack Speed
+                    Each hit decreases player resistance by 2%, stacking to 30%
+                Medium MS
+
+            Morphine
+                Melee
+                Boss
+                Medium Boss Health
+                Medium Boss Damage
+                Medium Attack Speed
+                Medium MS
+                Painkiller form (Takes 1/2 damage at 1/4 health)
+
+            Fentanyl
+                Summoner
+                Boss
+                Medium Boss Health
+                High Boss Damage, Reverse Scaling
+                Summons Melee and Ranged Form (1x)
+                    Summons can hit each other
+                Only heals summons
+                Stationary
+
+                    Melee
+                        Low Health
+                        High Damage
+                        High Attack Speed
+                        Medium MS
+
+                    Ranged
+                        Low Health
+                        High Damage
+                        Medium Attack Speed
+                        Slow MS
+
+                            Medium Speed Projectile - Infinite distance, obstacle collision; 2 Tile cloud projectile (Powdery look)
+
+                Reduce total damage/heals by 1/3 for boss upon each part death
+                Leave 2x2 DOT pool upon death - Location of troop = Lower Right Corner
+
+            Penicilin
+                BIG BOSS
     
     Player 
         Sprite/Animations
