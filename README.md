@@ -283,11 +283,23 @@ Things to work on (Semi-Ordered?)
     Player 
         Sprite/Animations
         Actions
+            Move - WASD
+            Use Item - ZXC
+            Interact - E
+            Inventory - 
         Upgrades
         Items
+        Weapons
         Currency
             Conversion from temporary to long-term
+            CATGU vs DNA
         Stats
+            Spread - Speed
+            Resilence - Damage Reduction
+            Potency - Damage
+            Adaptability - Luck
+            Infectability - Attack Speed
+            Vitality - Health
 
     Long-Term Upgrades
         Set vs Random "Research"
