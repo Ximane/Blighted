@@ -19,12 +19,16 @@ public class Home {
     private JButton quit;
     private JButton back;
 
-    
+    private ImageIcon background;
+
+    private JLabel bg;
+
+    private Dimension minimized = new Dimension(700, 500);
     
     //Function to set the default settings for the JFrame
     public void defaultFrameSetting(JFrame frame){
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setMinimumSize(new Dimension(700, 500));
+        frame.setMinimumSize(minimized);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -36,11 +40,22 @@ public class Home {
         button.setBorderPainted(false);
     }
 
+    //Function to Make Panels Blend with Background
+    public void BlendedPane(JPanel panel){
+        panel.setBackground(new Color (0, 0, 0, 0));
+    }
+
     //Initialize the Home Screen
     public void initialize(){
         homePage = new JFrame();
         homePage.setTitle("Home");
         defaultFrameSetting(homePage);
+
+        // background = new ImageIcon("\\HomePageIcons\\TesterImage.png");
+        // bg = new JLabel("", background, JLabel.CENTER);
+        // bg.setBounds(0, 0, JFrame.MAXIMIZED_HORIZ, JFrame.MAXIMIZED_VERT);
+        // bg.setMinimumSize(minimized);
+        // homePage.add(bg);
 
         //Create the Play Button
         play = new JButton("Play");
@@ -80,17 +95,21 @@ public class Home {
          //Create the Panels that are viewed
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6,3));
-        mainPanel.setBackground(new Color(128, 128, 255));
+        // BlendedPane(mainPanel);
 
         FirstBlock = new JPanel();
+        // BlendedPane(FirstBlock);
         SecondBlock = new JPanel();
+        // BlendedPane(SecondBlock);
         ThirdBlock = new JPanel();
+        // BlendedPane(ThirdBlock);
         FourthBlock = new JPanel();
+        // BlendedPane(FourthBlock);
         FifthBlock = new JPanel();
+        // BlendedPane(FifthBlock);
         SixthBlock = new JPanel();
-        // JPanel options = new JPanel();
-        // options.setLayout(new BoxLayout(options, BoxLayout.PAGE_AXIS));
-        // options.setBackground(new Color(255));
+        // BlendedPane(SixthBlock);
+
 
         SecondBlock.add(play);
         ThirdBlock.add(settings);
