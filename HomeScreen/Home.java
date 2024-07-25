@@ -19,11 +19,12 @@ public class Home {
     private JButton quit;
     private JButton back;
 
-    private ImageIcon background;
+    // private JLabel background;
 
-    private JLabel bg;
+    // private JLayeredPane layers;
 
     private Dimension minimized = new Dimension(700, 500);
+    private Dimension standardButton = new Dimension(75, 50);
     
     //Function to set the default settings for the JFrame
     public void defaultFrameSetting(JFrame frame){
@@ -38,6 +39,7 @@ public class Home {
         button.setOpaque(false);
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
+        button.setSize(standardButton);
     }
 
     //Function to Make Panels Blend with Background
@@ -51,11 +53,14 @@ public class Home {
         homePage.setTitle("Home");
         defaultFrameSetting(homePage);
 
-        // background = new ImageIcon("\\HomePageIcons\\TesterImage.png");
-        // bg = new JLabel("", background, JLabel.CENTER);
-        // bg.setBounds(0, 0, JFrame.MAXIMIZED_HORIZ, JFrame.MAXIMIZED_VERT);
-        // bg.setMinimumSize(minimized);
-        // homePage.add(bg);
+        // background = new JLabel(new ImageIcon("C:\\Users\\maxhs\\OneDrive\\Desktop\\Class Information\\Summer 24\\Blighted\\HomeScreen\\HomePageIcons\\TesterImage.png"));
+        // background.setOpaque(true);
+        // background.setBounds(0, 0, homePage.getWidth(), homePage.getHeight());
+        // background.setMinimumSize(minimized);
+
+        layers = new JLayeredPane();
+        
+        // layers.add(background, Integer.valueOf(0));
 
         //Create the Play Button
         play = new JButton("Play");
@@ -122,8 +127,12 @@ public class Home {
         mainPanel.add(FifthBlock);
         mainPanel.add(SixthBlock);
 
-        homePage.add(mainPanel);
+        // layers.add(mainPanel, Integer.valueOf(1));
+
+        // homePage.add(layers);
         
+        homePage.add(mainPanel);
+
         homePage.setVisible(true);
     }
 
