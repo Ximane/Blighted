@@ -19,17 +19,23 @@ public class Home {
     private JButton quit;
     private JButton back;
 
-    // private JLabel background;
+    private JLabel background;
 
-    // private JLayeredPane layers;
+    private ImageIcon backgroundImage;
 
-    private Dimension minimized = new Dimension(700, 500);
+    private JLayeredPane layers;
+
+    // private Dimension minimized = new Dimension(700, 500);
     private Dimension standardButton = new Dimension(75, 50);
+
+    //Get Screen Bounds
+    GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    Rectangle bounds = environment.getMaximumWindowBounds();
     
     //Function to set the default settings for the JFrame
     public void defaultFrameSetting(JFrame frame){
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setMinimumSize(minimized);
+        frame.setResizable(false);;
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -53,14 +59,14 @@ public class Home {
         homePage.setTitle("Home");
         defaultFrameSetting(homePage);
 
-        // background = new JLabel(new ImageIcon("C:\\Users\\maxhs\\OneDrive\\Desktop\\Class Information\\Summer 24\\Blighted\\HomeScreen\\HomePageIcons\\TesterImage.png"));
-        // background.setOpaque(true);
-        // background.setBounds(0, 0, homePage.getWidth(), homePage.getHeight());
-        // background.setMinimumSize(minimized);
+        backgroundImage = new ImageIcon(this.getClass().getResource("\\HomePageIcons\\TesterImage.png"));
+        // backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(homePage.getWidth(), homePage.getHeight(), Image.SCALE_DEFAULT));
+        background = new JLabel(backgroundImage);
+        background.setSize(1000,1000);
 
         layers = new JLayeredPane();
         
-        // layers.add(background, Integer.valueOf(0));
+        layers.add(background, Integer.valueOf(0));
 
         //Create the Play Button
         play = new JButton("Play");
@@ -97,10 +103,13 @@ public class Home {
             homePage.dispose(); //Exit on click
          });
         
-         //Create the Panels that are viewed
+        //  //Create the Panels that are viewed
         mainPanel = new JPanel();
+        mainPanel.setBackground(new Color(0, 0, 255));
+        mainPanel.setSize((int)bounds.getWidth(), (int)bounds.getHeight());
+        mainPanel.setOpaque(true);
         mainPanel.setLayout(new GridLayout(6,3));
-        // BlendedPane(mainPanel);
+        BlendedPane(mainPanel);
 
         FirstBlock = new JPanel();
         // BlendedPane(FirstBlock);
@@ -118,7 +127,7 @@ public class Home {
 
         SecondBlock.add(play);
         ThirdBlock.add(settings);
-        FourthBlock.add(quit);        
+        FourthBlock.add(quit);
 
         mainPanel.add(FirstBlock);
         mainPanel.add(SecondBlock);
@@ -127,11 +136,9 @@ public class Home {
         mainPanel.add(FifthBlock);
         mainPanel.add(SixthBlock);
 
-        // layers.add(mainPanel, Integer.valueOf(1));
+        layers.add(mainPanel, Integer.valueOf(1));
 
-        // homePage.add(layers);
-        
-        homePage.add(mainPanel);
+        homePage.add(layers);
 
         homePage.setVisible(true);
     }
