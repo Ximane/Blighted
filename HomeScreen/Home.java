@@ -2,6 +2,15 @@ package HomeScreen;
 import java.awt.*;
 import javax.swing.*;
 
+
+/*TODO
+ * Can I make it so that the main page can be randomized images/loading screen; Do it in post
+ * Also figure out what settings to add
+ * Change fonts for the buttons and possible enlarge, Possibly enlarge on hover?
+ * ...
+ */
+
+
 public class Home{
 
     private JFrame homePage;
@@ -71,6 +80,12 @@ public class Home{
         //Create the Play Button
         play = new JButton("Play");
         BlendedButton(play);
+        play.addActionListener(e->{
+            // Gameplay.Roguelike.Map.Playable test = new Gameplay.Roguelike.Map.Playable();
+            // test.initialize();
+            homePage.dispose();
+            //Add a call to open the Gameplay Frame and Close this frame
+        });
         
         //Create Settings Button
         settings = new JButton("Settings");
