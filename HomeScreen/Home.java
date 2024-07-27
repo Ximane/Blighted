@@ -2,7 +2,7 @@ package HomeScreen;
 import java.awt.*;
 import javax.swing.*;
 
-public class Home {
+public class Home{
 
     private JFrame homePage;
 
@@ -62,7 +62,7 @@ public class Home {
         backgroundImage = new ImageIcon(this.getClass().getResource("\\HomePageIcons\\TesterImage.png"));
         background = new JLabel(backgroundImage, SwingConstants.CENTER);
         background.setSize((int)bounds.getWidth(), (int)bounds.getHeight());
-        System.out.println(bounds.getWidth() + " "+ bounds.getHeight());
+        // System.out.println(bounds.getWidth() + " "+ bounds.getHeight());
 
         layers = new JLayeredPane();
         
@@ -143,9 +143,9 @@ public class Home {
         homePage.setVisible(true);
     }
 
-    public static void main(String args[]){
-        Home field = new Home();
-        field.initialize();
-    }
+    // public static void main(String args[]){
+    //     Home field = new Home();
+    //     field.initialize();
+    // }
 }
 
