@@ -50,7 +50,7 @@ public class Home {
 
     //Function to Make Panels Blend with Background
     public void BlendedPane(JPanel panel){
-        panel.setBackground(new Color (0, 0, 0, 0));
+        panel.setOpaque(false);
     }
 
     //Initialize the Home Screen
@@ -60,9 +60,9 @@ public class Home {
         defaultFrameSetting(homePage);
 
         backgroundImage = new ImageIcon(this.getClass().getResource("\\HomePageIcons\\TesterImage.png"));
-        // backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(homePage.getWidth(), homePage.getHeight(), Image.SCALE_DEFAULT));
-        background = new JLabel(backgroundImage);
-        background.setSize(1000,1000);
+        background = new JLabel(backgroundImage, SwingConstants.CENTER);
+        background.setSize((int)bounds.getWidth(), (int)bounds.getHeight());
+        System.out.println(bounds.getWidth() + " "+ bounds.getHeight());
 
         layers = new JLayeredPane();
         
@@ -103,7 +103,7 @@ public class Home {
             homePage.dispose(); //Exit on click
          });
         
-        //  //Create the Panels that are viewed
+        //Create the Panels that are viewed
         mainPanel = new JPanel();
         mainPanel.setBackground(new Color(0, 0, 255));
         mainPanel.setSize((int)bounds.getWidth(), (int)bounds.getHeight());
@@ -112,17 +112,17 @@ public class Home {
         BlendedPane(mainPanel);
 
         FirstBlock = new JPanel();
-        // BlendedPane(FirstBlock);
+        BlendedPane(FirstBlock);
         SecondBlock = new JPanel();
-        // BlendedPane(SecondBlock);
+        BlendedPane(SecondBlock);
         ThirdBlock = new JPanel();
-        // BlendedPane(ThirdBlock);
+        BlendedPane(ThirdBlock);
         FourthBlock = new JPanel();
-        // BlendedPane(FourthBlock);
+        BlendedPane(FourthBlock);
         FifthBlock = new JPanel();
-        // BlendedPane(FifthBlock);
+        BlendedPane(FifthBlock);
         SixthBlock = new JPanel();
-        // BlendedPane(SixthBlock);
+        BlendedPane(SixthBlock);
 
 
         SecondBlock.add(play);
