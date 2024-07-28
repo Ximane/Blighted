@@ -314,3 +314,15 @@ Things to work on (Semi-Ordered?)
         Sight
         Abilities
             (Maximum three)
+
+    Text file holding the permanent money and stats value
+
+    File holding temporary / adjustable values during run
+
+    KeyboardListener to get keyboard inputs from user
+        Esc
+        WASD
+        Itens
+        Etc.
+    
+    

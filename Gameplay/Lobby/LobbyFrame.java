@@ -25,6 +25,8 @@ public class LobbyFrame {
         MapFrame.setLocationRelativeTo(null);
         MapFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        MapFrame.add(mainPanel);
+
         MapFrame.setVisible(true);
     }
 

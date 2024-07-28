@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /*TODO
- * Figure out why this is NOT running; java.lang.ClassNotFoundException
+ * Figure out why this is NOT running; java.lang.ClassNotFoundException -- Fixed (Maybe)
  */
 
 public class MapFrame{
