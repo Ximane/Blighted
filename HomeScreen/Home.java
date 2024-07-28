@@ -81,8 +81,8 @@ public class Home{
         play = new JButton("Play");
         BlendedButton(play);
         play.addActionListener(e->{
-            // Gameplay.Roguelike.Map.Playable test = new Gameplay.Roguelike.Map.Playable();
-            // test.initialize();
+            Gameplay.Lobby.LobbyFrame toLobby = new Gameplay.Lobby.LobbyFrame();
+            toLobby.initialize();
             homePage.dispose();
             //Add a call to open the Gameplay Frame and Close this frame
         });

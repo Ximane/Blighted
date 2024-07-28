@@ -6,7 +6,7 @@ import javax.swing.*;
  * Figure out why this is NOT running; java.lang.ClassNotFoundException
  */
 
-public class Playable{
+public class MapFrame{
 
     private JPanel mainPanel;
 
@@ -32,7 +32,7 @@ public class Playable{
     }
 
     public static void main(String args[]){
-        Playable field = new Playable();
+        MapFrame field = new MapFrame();
         field.initialize();
     }
 }
