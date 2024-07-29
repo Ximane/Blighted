@@ -1,5 +1,7 @@
 # Summer24
 
+THIS is more of a TODO list than a ReadMe
+
 Things to work on (Semi-Ordered?)
 
     Rooms
@@ -324,5 +326,4 @@ Things to work on (Semi-Ordered?)
         WASD
         Itens
         Etc.
-    
     
