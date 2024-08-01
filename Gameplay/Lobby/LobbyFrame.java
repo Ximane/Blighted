@@ -9,49 +9,49 @@ import javax.swing.*;
  * May NOT need all the additional JPanel objects -- Check for a potential draw function
  */
 
-public class LobbyFrame {
+public class LobbyFrame{
     
     private JPanel mainPanel;
-    private JPanel Left;
-    private JPanel Right;
-    private JPanel Bottom;
-    private JPanel Top;
-    private JPanel Center;
+    // private JPanel Left;
+    // private JPanel Right;
+    // private JPanel Bottom;
+    // private JPanel Top;
+    // private JPanel Center;
 
-    private JFrame MapFrame;
+    private JFrame lobbyFrame;
 
     public void initialize(){
 
-        MapFrame = new JFrame();
+        lobbyFrame = new JFrame();
 
-        mainPanel = new JPanel();
+        mainPanel = new GraphicsPanel();
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(new Color(128, 128, 255));
+        mainPanel.setBackground(new Color(112, 128, 144));
 
         //Create the Panels to overlay on the main Panel
-        Left = new JPanel();
-        Right = new JPanel();
-        Bottom = new JPanel();
-        Top = new JPanel();
-        Center = new JPanel();
+        // Left = new JPanel();
+        // Right = new JPanel();
+        // Bottom = new JPanel();
+        // Top = new JPanel();
+        // Center = new JPanel();
 
-        mainPanel.add(Left, BorderLayout.WEST);        
-        mainPanel.add(Right, BorderLayout.EAST);
-        mainPanel.add(Bottom, BorderLayout.SOUTH);
-        mainPanel.add(Top, BorderLayout.NORTH);
-        mainPanel.add(Center, BorderLayout.CENTER);
+        // mainPanel.add(Left, BorderLayout.WEST);        
+        // mainPanel.add(Right, BorderLayout.EAST);
+        // mainPanel.add(Bottom, BorderLayout.SOUTH);
+        // mainPanel.add(Top, BorderLayout.NORTH);
+        // mainPanel.add(Center, BorderLayout.CENTER);
 
-        MapFrame.setTitle("Lobby");
-        // setSize(500, 600);
-        MapFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        MapFrame.setResizable(false);
-        // MapFrame.setMinimumSize(new Dimension(700, 500));
-        MapFrame.setLocationRelativeTo(null);
-        MapFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        lobbyFrame.setTitle("Lobby");
+        lobbyFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        lobbyFrame.setResizable(false);
+        // lobbyFrame.setSize(500, 600);
+        // lobbyFrame.setMinimumSize(new Dimension(700, 500));
+        lobbyFrame.setLocationRelativeTo(null);
+        lobbyFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        MapFrame.add(mainPanel);
+        lobbyFrame.add(mainPanel);
 
-        MapFrame.setVisible(true);
+        lobbyFrame.setVisible(true);
     }
 
     public static void main(String args[]){
