@@ -11,7 +11,7 @@ import javax.swing.*;
 
 public class LobbyFrame{
     
-    private JPanel mainPanel;
+    private GraphicsPanel mainPanel;
     // private JPanel Left;
     // private JPanel Right;
     // private JPanel Bottom;
@@ -28,6 +28,8 @@ public class LobbyFrame{
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(112, 128, 144));
 
+        mainPanel.startGameThread();
+
         //Create the Panels to overlay on the main Panel
         // Left = new JPanel();
         // Right = new JPanel();
@@ -42,15 +44,17 @@ public class LobbyFrame{
         // mainPanel.add(Center, BorderLayout.CENTER);
 
         lobbyFrame.setTitle("Lobby");
-        lobbyFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         lobbyFrame.setResizable(false);
         // lobbyFrame.setSize(500, 600);
         // lobbyFrame.setMinimumSize(new Dimension(700, 500));
-        lobbyFrame.setLocationRelativeTo(null);
         lobbyFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         lobbyFrame.add(mainPanel);
 
+        lobbyFrame.pack();
+
+        lobbyFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        lobbyFrame.setLocationRelativeTo(null);
         lobbyFrame.setVisible(true);
     }
 

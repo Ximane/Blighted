@@ -3,11 +3,23 @@ import java.awt.*;
 import javax.swing.*;
 
 
-public class GraphicsPanel extends JPanel{
+public class GraphicsPanel extends JPanel implements Runnable{
 
     int panelHeight;
     int panelWidth;
     int circle;
+
+    Thread runThread;
+
+    KeyMotionHandler keys = new KeyMotionHandler();
+
+    //Set Default player position
+    int playerX;
+    int playerY;
+    int playerSpeed;
+
+    //Set FPS
+    int FPS = 30;
     
     @Override
     //Function to draw on the frame to create the terrain outlines
@@ -19,11 +31,10 @@ public class GraphicsPanel extends JPanel{
         getDimensions(this);
 
         //Research Table
-        graphics.setColor(Color.PINK);
+        graphics.setColor(Color.WHITE);
         graphics.drawRect(0, (int)(panelHeight*0.65), (int)(panelWidth*0.05), (int)(panelHeight*0.2));
 
         //Entertainment Shop NPC
-        graphics.setColor(Color.BLACK);
         graphics.drawOval((int)(panelWidth*0.04), (int)(panelHeight*0.3), circle, circle);
         
         //Stools + Window - See the music and backgrounds collected; Backdrop
@@ -45,7 +56,6 @@ public class GraphicsPanel extends JPanel{
 
 
         //NPC 1 - Temp Buff
-        graphics.setColor(Color.WHITE);
         graphics.drawOval(panelWidth*21/36, panelHeight*11/18, circle, circle);
 
         //NPC 2
@@ -55,7 +65,6 @@ public class GraphicsPanel extends JPanel{
         graphics.drawOval(panelWidth*21/36, panelHeight*7/18, circle, circle);
 
         //Play
-        graphics.setColor(Color.WHITE);
         graphics.drawOval((int)((panelWidth-circle*2.5)/2), (int)((panelHeight*1.05-circle*2.5)/2), circle*3, circle*3);
 
         //Item Box
@@ -63,6 +72,10 @@ public class GraphicsPanel extends JPanel{
 
         //Spawn Box - Can make small carpet
         graphics.drawRect((int)(panelWidth*0.4), (int)(panelHeight*0.9), (int)(panelWidth*0.2), (int)(panelHeight*0.1));
+        playerX = (int)(panelWidth*0.4875);
+        playerY = (int)(panelHeight*0.95);
+
+        graphics.fillRect(playerX, playerY, (int)(panelWidth*0.025), (int)(panelWidth*0.025));
 
         //Exit Door
         graphics.drawRect((int)(panelWidth*0.2), (int)(panelHeight*0.95), (int)(panelWidth*0.1), (int)(panelHeight*0.05));
@@ -78,7 +91,7 @@ public class GraphicsPanel extends JPanel{
 
         //Shady Gambling
         graphics.drawRect((int)(panelWidth*0.9), (int)(panelHeight*0.15), (int)(panelWidth*0.1), (int)(panelHeight*0.15));
-    
+
     }
 
     public void getDimensions(JPanel pane){
@@ -86,11 +99,114 @@ public class GraphicsPanel extends JPanel{
             // System.out.print("GERRRR");
             return;
         }
-
-        panelHeight = pane.getHeight();
-        panelWidth = pane.getWidth();
-        circle = (int)(panelHeight*0.075);
-
+        else{
+            panelHeight = pane.getHeight();
+            panelWidth = pane.getWidth();
+            circle = (int)(panelHeight*0.075);
+            playerSpeed = panelWidth/500;
+        }
         // System.out.print(panelWidth + " " + panelHeight);
     }
+
+    GraphicsPanel(){
+        this.setDoubleBuffered(true);
+        this.addKeyListener(keys);
+        this.setFocusable(true);
+    }
+
+    public void startGameThread(){
+        runThread = new Thread(this);
+        repaint();
+        try {
+            Thread.sleep((long)100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        runThread.start();
+    }
+
+    public void run(){
+
+        //Delay time between updates
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currTime;
+        // double nextDraw = System.nanoTime() + drawInterval;
+
+
+        while(runThread != null){
+            currTime = System.nanoTime();
+
+            delta += (currTime - lastTime) / drawInterval;
+
+            lastTime = currTime;
+
+            if(delta>=1){
+                update();
+
+                System.out.print(playerX);
+
+                repaint();
+
+                try {
+                    Thread.sleep((long)100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                delta--;
+            }
+
+            // try {
+
+            //     double remainingTime = nextDraw - System.nanoTime();
+            //     remainingTime= remainingTime/1000000;
+
+            //     if(remainingTime<0){
+            //         remainingTime = 0;
+            //     }
+
+            //     Thread.sleep((long)remainingTime);
+
+            //     nextDraw += drawInterval;
+
+            // } catch (InterruptedException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // }
+        }
+    }
+
+    public void update(){
+        if(keys.upPress==true){
+            playerY -= playerSpeed;
+            if(playerY<0){
+                playerY = 0;
+            }
+        }
+        else if(keys.downPress==true){
+            playerY += playerSpeed;
+            if(playerY>panelHeight-circle*0.5){
+                playerY = panelHeight-circle;
+            }
+        }
+        else if(keys.leftPress==true){
+            playerX -= playerSpeed;
+            if(playerX<0){
+                playerX = 0;
+            }
+        }
+        else if(keys.rightPress==true){
+            playerX += playerSpeed;
+            if(playerX>panelWidth-circle*0.5){
+                playerX = panelWidth-circle;
+            }
+        }
+    }
+
+    public void setFPS(int FPS){
+        this.FPS = FPS;
+    }
+
 }
