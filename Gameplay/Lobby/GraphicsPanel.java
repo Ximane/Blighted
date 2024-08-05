@@ -2,11 +2,14 @@ package Gameplay.Lobby;
 import java.awt.*;
 import javax.swing.*;
 
+/*TODO
+ * Figure out why it only runs correctly some of the time
+ */
 
 public class GraphicsPanel extends JPanel implements Runnable{
 
-    int panelHeight;
-    int panelWidth;
+    public static int panelHeight;
+    public static int panelWidth;
     int circle;
 
     Thread runThread;
@@ -19,7 +22,7 @@ public class GraphicsPanel extends JPanel implements Runnable{
     int playerSpeed;
 
     //Set FPS
-    int FPS = 30;
+    int FPS = 60;
     
     @Override
     //Function to draw on the frame to create the terrain outlines
@@ -72,10 +75,7 @@ public class GraphicsPanel extends JPanel implements Runnable{
 
         //Spawn Box - Can make small carpet
         graphics.drawRect((int)(panelWidth*0.4), (int)(panelHeight*0.9), (int)(panelWidth*0.2), (int)(panelHeight*0.1));
-        playerX = (int)(panelWidth*0.4875);
-        playerY = (int)(panelHeight*0.95);
 
-        graphics.fillRect(playerX, playerY, (int)(panelWidth*0.025), (int)(panelWidth*0.025));
 
         //Exit Door
         graphics.drawRect((int)(panelWidth*0.2), (int)(panelHeight*0.95), (int)(panelWidth*0.1), (int)(panelHeight*0.05));
@@ -92,11 +92,15 @@ public class GraphicsPanel extends JPanel implements Runnable{
         //Shady Gambling
         graphics.drawRect((int)(panelWidth*0.9), (int)(panelHeight*0.15), (int)(panelWidth*0.1), (int)(panelHeight*0.15));
 
+        //Player
+        graphics.fillRect(playerX, playerY, (int)(panelWidth*0.025), (int)(panelWidth*0.025));
+
+        graphics.dispose();
+
     }
 
     public void getDimensions(JPanel pane){
         if(panelHeight != 0 || panelWidth !=0){
-            // System.out.print("GERRRR");
             return;
         }
         else{
@@ -104,6 +108,8 @@ public class GraphicsPanel extends JPanel implements Runnable{
             panelWidth = pane.getWidth();
             circle = (int)(panelHeight*0.075);
             playerSpeed = panelWidth/500;
+            playerX = (int)(panelWidth*0.4875);
+            playerY = (int)(panelHeight*0.95);
         }
         // System.out.print(panelWidth + " " + panelHeight);
     }
@@ -112,16 +118,12 @@ public class GraphicsPanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keys);
         this.setFocusable(true);
+
     }
 
     public void startGameThread(){
         runThread = new Thread(this);
-        repaint();
-        try {
-            Thread.sleep((long)100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        
         runThread.start();
     }
 
@@ -132,30 +134,33 @@ public class GraphicsPanel extends JPanel implements Runnable{
         double delta = 0;
         long lastTime = System.nanoTime();
         long currTime;
-        // double nextDraw = System.nanoTime() + drawInterval;
-
+        long timer = 0;
+        int drawCount = 0;
 
         while(runThread != null){
             currTime = System.nanoTime();
 
             delta += (currTime - lastTime) / drawInterval;
+            timer += (currTime - lastTime); //Check if it is 60FPS
 
             lastTime = currTime;
 
-            if(delta>=1){
+            if(delta >= 1){
+
                 update();
 
-                System.out.print(playerX);
+                invalidate();
 
-                repaint();
-
-                try {
-                    Thread.sleep((long)100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                this.repaint();
 
                 delta--;
+                drawCount++;
+            }
+
+            if(timer >= 1000000000){
+                System.out.println("FPS: " + drawCount + " -- " + playerX + ", " + playerY);
+                drawCount = 0;
+                timer = 0;
             }
 
             // try {
@@ -172,35 +177,34 @@ public class GraphicsPanel extends JPanel implements Runnable{
             //     nextDraw += drawInterval;
 
             // } catch (InterruptedException e) {
-            //     // TODO Auto-generated catch block
             //     e.printStackTrace();
             // }
         }
     }
 
     public void update(){
-        if(keys.upPress==true){
+        if(keys.upPress == true){
             playerY -= playerSpeed;
-            if(playerY<0){
+            if(playerY < 0){
                 playerY = 0;
             }
         }
-        else if(keys.downPress==true){
+        else if(keys.downPress == true){
             playerY += playerSpeed;
-            if(playerY>panelHeight-circle*0.5){
-                playerY = panelHeight-circle;
+            if(playerY > panelHeight-panelWidth*0.025){
+                playerY = (int)(panelHeight-(panelWidth*0.025));
             }
         }
-        else if(keys.leftPress==true){
+        else if(keys.leftPress == true){
             playerX -= playerSpeed;
-            if(playerX<0){
+            if(playerX < 0){
                 playerX = 0;
             }
         }
-        else if(keys.rightPress==true){
+        else if(keys.rightPress == true){
             playerX += playerSpeed;
-            if(playerX>panelWidth-circle*0.5){
-                playerX = panelWidth-circle;
+            if(playerX > panelWidth-panelWidth*0.025){
+                playerX = (int)(panelWidth-(panelWidth*0.025));
             }
         }
     }

@@ -25,7 +25,7 @@ public class LobbyFrame{
         lobbyFrame = new JFrame();
 
         mainPanel = new GraphicsPanel();
-        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setLayout(new GridLayout(1, 1));
         mainPanel.setBackground(new Color(112, 128, 144));
 
         mainPanel.startGameThread();
@@ -46,7 +46,6 @@ public class LobbyFrame{
         lobbyFrame.setTitle("Lobby");
         lobbyFrame.setResizable(false);
         // lobbyFrame.setSize(500, 600);
-        // lobbyFrame.setMinimumSize(new Dimension(700, 500));
         lobbyFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         lobbyFrame.add(mainPanel);
