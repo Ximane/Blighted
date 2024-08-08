@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /*TODO
- * Figure out why it only runs correctly some of the time
+ * Figure out how to run properly from HomeRunner Play button
  */
 
 public class GraphicsPanel extends JPanel implements Runnable{
@@ -185,8 +185,8 @@ public class GraphicsPanel extends JPanel implements Runnable{
     public void update(){
         if(keys.upPress == true){
             playerY -= playerSpeed;
-            if(playerY < 0){
-                playerY = 0;
+            if(playerY < panelHeight*0.15){
+                playerY = (int)(panelHeight*0.15);
             }
         }
         else if(keys.downPress == true){
